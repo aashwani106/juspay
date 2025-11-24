@@ -11,7 +11,8 @@ import {
     MessageSquare,
     ChevronRight,
     ChevronDown,
-    Dot
+    Dot,
+    X
 } from 'lucide-react';
 
 const SidebarItem = ({ icon: Icon, label, active, hasSubmenu, expanded, onClick }) => {
@@ -39,9 +40,14 @@ const SectionHeader = ({ title }) => (
     </div>
 );
 
-const Sidebar = ({ currentView, onNavigate }) => {
-    return (
-        <div className="hidden lg:flex lg:w-56 xl:w-64 h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-100 dark:border-gray-800 flex-col p-4 sticky top-0 overflow-y-auto transition-colors duration-300">
+const Sidebar = ({ currentView, onNavigate, isMobileOpen, onClose }) => {
+    const handleNavigation = (view) => {
+        onNavigate(view);
+        if (onClose) onClose(); // Close mobile sidebar after navigation
+    };
+
+    const sidebarContent = (
+        <>
             {/* User Profile */}
             <div className="flex items-center gap-3 mb-8 px-1">
                 <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
@@ -67,13 +73,13 @@ const Sidebar = ({ currentView, onNavigate }) => {
                         label="Default"
                         icon={LayoutDashboard}
                         active={currentView === 'dashboard'}
-                        onClick={() => onNavigate('dashboard')}
+                        onClick={() => handleNavigation('dashboard')}
                     />
                     <SidebarItem
                         label="Order List"
                         icon={ShoppingBag}
                         active={currentView === 'orderList'}
-                        onClick={() => onNavigate('orderList')}
+                        onClick={() => handleNavigation('orderList')}
                     />
                     <SidebarItem label="eCommerce" icon={ShoppingBag} />
                     <SidebarItem label="Projects" icon={FolderOpen} />
@@ -96,7 +102,39 @@ const Sidebar = ({ currentView, onNavigate }) => {
                     <SidebarItem label="Social" icon={MessageSquare} hasSubmenu />
                 </ul>
             </div>
-        </div>
+        </>
+    );
+
+    return (
+        <>
+            {/* Desktop Sidebar */}
+            <div className="hidden lg:flex lg:w-56 xl:w-64 h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-100 dark:border-gray-800 flex-col p-4 sticky top-0 overflow-y-auto transition-colors duration-300">
+                {sidebarContent}
+            </div>
+
+            {/* Mobile Sidebar Backdrop */}
+            {isMobileOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+                    onClick={onClose}
+                />
+            )}
+
+            {/* Mobile Sidebar Drawer */}
+            <div
+                className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-[#1C1C1C] border-r border-gray-100 dark:border-gray-800 p-4 overflow-y-auto transition-transform duration-300 z-50 lg:hidden ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'
+                    }`}
+            >
+                {/* Close Button */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                >
+                    <X size={20} />
+                </button>
+                {sidebarContent}
+            </div>
+        </>
     );
 };
 
