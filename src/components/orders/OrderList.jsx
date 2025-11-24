@@ -16,7 +16,7 @@ const orders = [
 
 const OrderList = () => {
     return (
-        <div className="p-6 max-w-7xl mx-auto">
+        <div className="p-4 sm:p-6 max-w-7xl mx-auto">
             <h2 className="text-sm font-semibold mb-6 text-gray-900 dark:text-white">Order List</h2>
 
             <div className="bg-[#F7F9FB] dark:bg-[#262626] p-1.5 rounded-xl mb-6 flex items-center justify-between transition-colors duration-300">
@@ -36,13 +36,13 @@ const OrderList = () => {
                     <input
                         type="text"
                         placeholder="Search"
-                        className="pl-9 pr-4 py-1.5 bg-white dark:bg-[#1C1C1C] border border-gray-200 dark:border-gray-700 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white w-48 transition-colors"
+                        className="pl-9 pr-4 py-1.5 bg-white dark:bg-[#1C1C1C] border border-gray-200 dark:border-gray-700 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 dark:text-white w-32 sm:w-48 transition-colors"
                     />
                 </div>
             </div>
 
-            <div className="bg-white dark:bg-[#1C1C1C] rounded-none overflow-hidden transition-colors duration-300">
-                <table className="w-full text-xs text-left">
+            <div className="bg-white dark:bg-[#1C1C1C] rounded-none overflow-x-auto transition-colors duration-300">
+                <table className="w-full min-w-[800px] text-xs text-left">
                     <thead>
                         <tr className="text-gray-400 border-b border-gray-100 dark:border-gray-800">
                             <th className="py-2 pl-4 w-10">
@@ -51,7 +51,7 @@ const OrderList = () => {
                             <th className="py-2 font-normal">Order ID</th>
                             <th className="py-2 font-normal">User</th>
                             <th className="py-2 font-normal">Project</th>
-                            <th className="py-2 font-normal">Address</th>
+                            <th className="py-2 font-normal hidden sm:table-cell">Address</th>
                             <th className="py-2 font-normal">Date</th>
                             <th className="py-2 font-normal">Status</th>
                             <th className="py-2 pr-4"></th>
@@ -73,7 +73,7 @@ const OrderList = () => {
                                     </div>
                                 </td>
                                 <td className="py-2">{order.project}</td>
-                                <td className="py-2">{order.address}</td>
+                                <td className="py-2 hidden sm:table-cell">{order.address}</td>
                                 <td className="py-2">
                                     <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
                                         <Calendar size={12} />
