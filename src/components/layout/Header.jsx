@@ -11,13 +11,13 @@ import {
 } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
     const { theme, toggleTheme } = useTheme();
 
     return (
         <header className="h-16 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between px-3 sm:px-6 bg-white dark:bg-[#1C1C1C] transition-colors duration-300">
             <div className="flex items-center gap-2 sm:gap-4">
-                <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                <button onClick={onMenuClick} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 lg:hidden">
                     <Sidebar size={20} />
                 </button>
                 <button className="hidden sm:block text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300">
