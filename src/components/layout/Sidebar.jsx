@@ -41,7 +41,7 @@ const SectionHeader = ({ title }) => (
 
 const Sidebar = ({ currentView, onNavigate }) => {
     return (
-        <div className="w-64 h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-100 dark:border-gray-800 flex flex-col p-4 sticky top-0 overflow-y-auto transition-colors duration-300">
+        <div className="hidden lg:flex lg:w-56 xl:w-64 h-screen bg-white dark:bg-[#1C1C1C] border-r border-gray-100 dark:border-gray-800 flex-col p-4 sticky top-0 overflow-y-auto transition-colors duration-300">
             {/* User Profile */}
             <div className="flex items-center gap-3 mb-8 px-1">
                 <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
