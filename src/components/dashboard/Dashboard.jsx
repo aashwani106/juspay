@@ -10,10 +10,10 @@ const Dashboard = () => {
         <div className="max-w-7xl mx-auto">
             <h2 className="text-sm font-semibold mb-6 text-gray-900 dark:text-white">eCommerce</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
                 {/* Top Left Block */}
-                <div className="col-span-1 xl:col-span-2 space-y-6">
-                    <div className="grid grid-cols-2 gap-6">
+                <div className="col-span-1 lg:col-span-1 xl:col-span-2 space-y-4 sm:space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                         <div className="col-span-1 h-32">
                             <StatCard title="Customers" value="3,781" change={11.01} isPositive={true} className="bg-[#E3F5FF] dark:bg-[#262626]" />
                         </div>
@@ -21,7 +21,7 @@ const Dashboard = () => {
                             <StatCard title="Orders" value="1,219" change={-0.03} isPositive={false} className="bg-[#F7F9FB] dark:bg-[#262626]" />
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                         <div className="col-span-1 h-32">
                             <StatCard title="Revenue" value="$695" change={15.03} isPositive={true} className="bg-[#F7F9FB] dark:bg-[#262626]" />
                         </div>
@@ -32,12 +32,12 @@ const Dashboard = () => {
                 </div>
 
                 {/* Top Right Block - Projections */}
-                <div className="col-span-1 xl:col-span-2 h-full min-h-[280px]">
+                <div className="col-span-1 lg:col-span-1 xl:col-span-2 h-full min-h-[280px]">
                     <ProjectionsChart />
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-6">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
                 <div className="xl:col-span-3 h-[360px]">
                     <RevenueChart />
                 </div>
@@ -46,10 +46,10 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
-                <div className="xl:col-span-3 bg-[#F7F9FB] dark:bg-[#262626] p-6 rounded-2xl min-h-[200px] transition-colors duration-300">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 sm:gap-6">
+                <div className="xl:col-span-3 bg-[#F7F9FB] dark:bg-[#262626] p-4 sm:p-6 rounded-2xl min-h-[200px] transition-colors duration-300 overflow-x-auto">
                     <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-4">Top Selling Products</h3>
-                    <table className="w-full text-sm text-left">
+                    <table className="w-full min-w-[500px] text-sm text-left">
                         <thead>
                             <tr className="text-gray-400 border-b border-gray-200 dark:border-gray-700">
                                 <th className="py-2 font-normal">Name</th>
